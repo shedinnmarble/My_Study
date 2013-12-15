@@ -46,6 +46,24 @@ namespace linq001
                                 orderby score ascending
                                 select score).FirstOrDefault();
             Console.WriteLine(highestScore);
+
+            string[] names = { "Svetlana Omelchenko", "Claire O'Donnell", "Sven Mortensen", "Cesar Garcia" };
+            IEnumerable<string> FirstSelect = from name in names
+                                              let first = name.Split(new char[] { ' ' })[0]
+                                              select name.Split(new char[] { ' ' })[0];
+
+            var testZijv = from name in names
+                           group name by name into test2
+                           select test2;
+            foreach (var item in testZijv)
+            {
+                Console.WriteLine(  item);
+            }
+            foreach (var item in FirstSelect)
+            {
+                //Console.WriteLine(item);
+            }
+
             Console.ReadKey();
         }
     }
