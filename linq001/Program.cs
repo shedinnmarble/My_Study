@@ -21,24 +21,31 @@ namespace linq001
                 orderby score descending
                 select score;
 
-            var scoreQ = from score in scores
-                         where score > 80
-                         select score;
+            //var scoreQ = from score in scores
+            //             where score > 80
+            //             select score;
+
+            
+
+            //foreach (int i in scoreQ)
+            //{
+            //    Console.WriteLine(i + ",");
+            //}
 
             IEnumerable<string> highScores = from score in scores
                                              where score > 80
                                              orderby score ascending
                                              select string.Format("the high score is{0}", score);
-
-            foreach (int i in scoreQ)
-            {
-                Console.WriteLine(i + ",");
-            }
             foreach (string s in highScores)
             {
-                Console.WriteLine(  s);
+                //Console.WriteLine(  s);
             }
 
+            int highestScore = (from score in scores
+                                where score > 60 
+                                orderby score ascending
+                                select score).FirstOrDefault();
+            Console.WriteLine(highestScore);
             Console.ReadKey();
         }
     }
